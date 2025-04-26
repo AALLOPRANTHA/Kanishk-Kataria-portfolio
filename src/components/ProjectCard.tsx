@@ -24,7 +24,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   
   // Calculate animation delay based on index
-  const animationDelay = `${index * 0.1}s`;
+  const animationDelay = `${index * 0.15}s`;
   
   return (
     <div 
@@ -44,27 +44,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       >
         <div 
           className={cn(
-            "parallax-card overflow-hidden rounded-xl bg-card border border-border/40 hover:border-border/80 shadow-lg hover:shadow-xl",
+            "parallax-card overflow-hidden rounded-xl bg-card/50 backdrop-blur-md border border-white/10 hover:border-white/20 shadow-lg hover:shadow-xl shimmer fancy-border",
             isHovered ? "transform-gpu scale-[1.02]" : ""
           )}
           style={{
-            transform: isHovered ? "rotateX(2deg) rotateY(2deg)" : "rotateX(0) rotateY(0)"
+            transform: isHovered ? "rotateX(3deg) rotateY(3deg)" : "rotateX(0) rotateY(0)"
           }}
         >
           <div className="relative overflow-hidden aspect-[16/9]">
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
             <img 
               src={image} 
               alt={title} 
               className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
             />
-            <div className="absolute top-4 right-4 z-20 bg-background/80 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium">
+            <div className="absolute top-4 right-4 z-20 bg-background/70 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium border border-white/10">
               {category}
             </div>
           </div>
           
           <div className="p-6">
-            <h3 className="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors duration-300">
+            <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300">
               {title}
             </h3>
             
@@ -76,7 +76,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               {techStack.map((tech) => (
                 <span 
                   key={tech} 
-                  className="text-xs bg-secondary px-2 py-1 rounded-full"
+                  className="tech-tag"
                 >
                   {tech}
                 </span>

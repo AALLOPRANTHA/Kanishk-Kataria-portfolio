@@ -12,7 +12,7 @@ const projects = [
   {
     id: 1,
     title: "Huliya",
-    description: "A Python-based facial recognition system that uses machine learning algorithms to identify and analyze facial features.",
+    description: "A Python-based facial recognition system that uses machine learning algorithms to identify and analyze facial features with high accuracy.",
     techStack: ["Python", "TensorFlow", "OpenCV", "Flask"],
     image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     link: "#",
@@ -21,7 +21,7 @@ const projects = [
   {
     id: 2,
     title: "MAKE.COM",
-    description: "Integration platform built with Java that connects different apps and services, automating workflows across platforms.",
+    description: "Enterprise integration platform built with Java that connects different apps and services, automating complex workflows across platforms.",
     techStack: ["Java", "Spring Boot", "API", "Microservices"],
     image: "https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     link: "#",
@@ -30,7 +30,7 @@ const projects = [
   {
     id: 3,
     title: "OnlyJobs",
-    description: "Full stack job search platform with personalized matching algorithm connecting job seekers with potential employers.",
+    description: "Full stack job search platform with personalized matching algorithm connecting job seekers with potential employers, built from scratch.",
     techStack: ["React", "Node.js", "MongoDB", "Express"],
     image: "https://images.unsplash.com/photo-1573164574511-73c773193279?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     link: "#",
@@ -38,12 +38,30 @@ const projects = [
   },
   {
     id: 4,
-    title: "Portfolio Website",
-    description: "Interactive developer portfolio showcasing projects and skills with stunning animations and parallax effects.",
-    techStack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    title: "Brainy Breakdown",
+    description: "Interactive mental health resource platform showcasing backend connectivity with dynamic user experience and personalized tracking.",
+    techStack: ["React", "TypeScript", "PHP", "MySQL"],
     image: "https://images.unsplash.com/photo-1517292987719-0369a794ec0f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
     link: "#",
-    category: "Frontend Project"
+    category: "Full Stack Project"
+  },
+  {
+    id: 5,
+    title: "AI Chatbot Newsletter",
+    description: "Interactive newsletter webpage with AI chatbot integration providing personalized content recommendations and real-time user assistance.",
+    techStack: ["JavaScript", "Python", "TensorFlow", "HTML/CSS"],
+    image: "https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    link: "#",
+    category: "AI Project"
+  },
+  {
+    id: 6,
+    title: "JHABUA Biogas Plant",
+    description: "Sustainable energy solution for farmers, featuring interactive dashboard for monitoring and educational content on biogas benefits.",
+    techStack: ["React", "Chart.js", "Node.js", "IoT"],
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+    link: "#",
+    category: "Sustainability Project"
   }
 ];
 
@@ -70,11 +88,11 @@ const Index = () => {
     
     // Add hover effect for interactive elements
     const handleLinkHover = () => {
-      cursor.style.transform = `translate(${cursor.offsetLeft - 16}px, ${cursor.offsetTop - 16}px) scale(1.5)`;
+      cursor.classList.add("scale-150");
     };
     
     const handleLinkLeave = () => {
-      cursor.style.transform = `translate(${cursor.offsetLeft - 16}px, ${cursor.offsetTop - 16}px) scale(1)`;
+      cursor.classList.remove("scale-150");
     };
     
     document.addEventListener("mousemove", handleMouseMove);
@@ -151,24 +169,25 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="relative">
+    <div className="relative bg-background text-foreground min-h-screen">
       <Navbar />
       <Hero />
       <About />
       
       {/* Projects Section */}
-      <section id="projects" className="py-20 md:py-32 relative bg-secondary/30">
+      <section id="projects" className="py-20 md:py-32 relative bg-secondary/10">
+        <div className="noise-overlay"></div>
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 reveal">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="gradient-text">Featured Projects</span>
             </h2>
             <p className="text-foreground/70 max-w-xl mx-auto">
-              Explore some of my recent work across different technologies and platforms.
+              Explore my recent work across different technologies and platforms, showcasing innovative solutions.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {projects.map((project, index) => (
               <ProjectCard
                 key={project.id}
@@ -188,7 +207,7 @@ const Index = () => {
         <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-background to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-background to-transparent"></div>
         <div className="absolute top-40 right-20 w-60 h-60 bg-blue-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 left-20 w-80 h-80 bg-violet-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-40 left-20 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl"></div>
       </section>
       
       <Contact />
@@ -197,7 +216,7 @@ const Index = () => {
       {/* Custom cursor */}
       <div 
         ref={cursorRef}
-        className="fixed w-8 h-8 rounded-full pointer-events-none z-50 mix-blend-difference bg-white opacity-0 transition-transform duration-200 ease-out"
+        className="fixed w-8 h-8 rounded-full pointer-events-none z-50 mix-blend-difference bg-white opacity-0 transition-all duration-200 ease-out"
       ></div>
     </div>
   );
